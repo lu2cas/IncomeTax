@@ -1,26 +1,29 @@
 package taxreturns;
 
-import taxpayer.SimplifiedTaxpayer;
+import taxpayer.Taxpayer;
 
 public class SimplifiedTaxReturn implements TaxReturnInterface {
-	private SimplifiedTaxpayer simplifiedTaxpayer;
+	private Taxpayer taxpayer;
 
-	public SimplifiedTaxReturn(SimplifiedTaxpayer simplified_taxpayer) {
-		this.simplifiedTaxpayer = simplified_taxpayer;
+	public SimplifiedTaxReturn(Taxpayer taxpayer) {
+		this.taxpayer = taxpayer;
 	}
 
-	public SimplifiedTaxpayer getSimplifiedTaxpayer() {
-		return this.simplifiedTaxpayer;
+	public Taxpayer getTaxpayer() {
+		return this.taxpayer;
 	}
 	
-	public void setSimplifiedTaxpayer(SimplifiedTaxpayer simplified_taxpayer) {
-		this.simplifiedTaxpayer = simplified_taxpayer;
+	public void setSimplifiedTaxpayer(Taxpayer taxpayer) {
+		this.taxpayer = taxpayer;
 	}
 
 	public double getCalculationBasis() {
 		double calculation_basis = 0;
-		calculation_basis = this.simplifiedTaxpayer.getTotalIncome() - this.simplifiedTaxpayer.getSocialSecurityContribution();
-		calculation_basis = 0.95 * calculation_basis;  
+		calculation_basis = this.taxpayer.getTotalIncome() - this.taxpayer.getSocialSecurityContribution();
+
+		// Desconto de 5%
+		calculation_basis = 0.95 * calculation_basis;
+
 		return calculation_basis;
 	}
 
