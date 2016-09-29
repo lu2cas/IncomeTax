@@ -1,9 +1,15 @@
 package taxreturns;
 
+import taxpayer.Taxpayer;
+
 /**
  * Declaração de imposto de renda
  */
 public abstract class TaxReturn {
+	public abstract Taxpayer getTaxpayer();
+
+	public abstract void setTaxpayer(Taxpayer taxpayer);
+
 	public abstract double getCalculationBasis();
 
 	public double getIncomeTax(double calculation_basis) {
