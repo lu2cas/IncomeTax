@@ -20,7 +20,6 @@ public class SimplifiedTaxReturn extends TaxReturn {
 	@Override
 	public void setTaxpayer(Taxpayer taxpayer) {
 		this.taxpayer = taxpayer;
-		
 	}
 
 	@Override

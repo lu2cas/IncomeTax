@@ -35,7 +35,7 @@ public class CompleteTaxReturn extends TaxReturn {
 			} else if (this.taxpayer.getTotalDependents() >= 3 && this.taxpayer.getTotalDependents() <= 5) {
 				// Desconto de 3.5%
 				calculation_basis = 0.965 * calculation_basis;
-			} else if (this.taxpayer.getTotalDependents() <= 2) {
+			} else if (this.taxpayer.getTotalDependents() > 5) {
 				// Desconto de 5%
 				calculation_basis = 0.95 * calculation_basis;
 			}
@@ -46,7 +46,7 @@ public class CompleteTaxReturn extends TaxReturn {
 			} else if (this.taxpayer.getTotalDependents() >= 3 && this.taxpayer.getTotalDependents() <= 5) {
 				// Desconto de 4.5%
 				calculation_basis = 0.955 * calculation_basis;
-			} else if (this.taxpayer.getTotalDependents() <= 2) {
+			} else if (this.taxpayer.getTotalDependents() > 5) {
 				// Desconto de 6%
 				calculation_basis = 0.94 * calculation_basis;
 			}
@@ -57,7 +57,7 @@ public class CompleteTaxReturn extends TaxReturn {
 
 	public double getIncomeTax() {
 		double calculation_basis = this.getCalculationBasis();
-
+System.out.println(calculation_basis);
 		return this.getIncomeTax(calculation_basis);
 	}
 }
