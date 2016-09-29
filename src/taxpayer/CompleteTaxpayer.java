@@ -1,7 +1,6 @@
 package taxpayer;
 
 public class CompleteTaxpayer extends SimplifiedTaxpayer {
-
 	private int age;
 	private int totalDependents;
 
