@@ -1,5 +1,8 @@
 package taxpayer;
 
+/**
+ * Contribuinte
+ */
 public class Taxpayer {
 	private String name;
 	private String cpf;

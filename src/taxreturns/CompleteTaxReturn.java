@@ -2,7 +2,10 @@ package taxreturns;
 
 import taxpayer.Taxpayer;
 
-public class CompleteTaxReturn implements TaxReturnInterface {
+/**
+ * Declaração de imposto de renda completa
+ */
+public class CompleteTaxReturn extends TaxReturn {
 	private Taxpayer taxpayer;
 
 	public CompleteTaxReturn(Taxpayer taxpayer) {
@@ -11,10 +14,6 @@ public class CompleteTaxReturn implements TaxReturnInterface {
 
 	public Taxpayer getTaxpayer() {
 		return this.taxpayer;
-	}
-	
-	public void setTaxpayer(Taxpayer taxpayer) {
-		this.taxpayer = taxpayer;
 	}
 
 	public double getCalculationBasis() {
@@ -49,17 +48,8 @@ public class CompleteTaxReturn implements TaxReturnInterface {
 	}
 
 	public double getIncomeTax() {
-		double income_tax = 0;
 		double calculation_basis = this.getCalculationBasis();
 
-		if (calculation_basis <= 12000) {
-			income_tax = 0;
-		} else if (calculation_basis > 12000 && calculation_basis < 24000) {
-			income_tax = (calculation_basis - 12000) * 0.15;
-		} else if (calculation_basis >= 24000) {
-			income_tax = (calculation_basis - 12000) * 0.15 + (calculation_basis - 24000) * 0.275;
-		}
-
-		return income_tax;
+		return this.getIncomeTax(calculation_basis);
 	}
 }
