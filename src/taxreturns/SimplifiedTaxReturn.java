@@ -18,10 +18,24 @@ public class SimplifiedTaxReturn implements TaxReturnInterface {
 	}
 
 	public double getCalculationBasis() {
-		return 0;
+		double calculation_basis = 0;
+		calculation_basis = this.simplifiedTaxpayer.getTotalIncome() - this.simplifiedTaxpayer.getSocialSecurityContribution();
+		calculation_basis = 0.95 * calculation_basis;  
+		return calculation_basis;
 	}
 
 	public double getIncomeTax() {
-		return 0;
+		double income_tax = 0;
+		double calculation_basis = this.getCalculationBasis();
+
+		if (calculation_basis <= 12000) {
+			income_tax = 0;
+		} else if (calculation_basis > 12000 && calculation_basis < 24000) {
+			income_tax = (calculation_basis - 12000) * 0.15;
+		} else if (calculation_basis >= 24000) {
+			income_tax = (calculation_basis - 12000) * 0.15 + (calculation_basis - 24000) * 0.275;
+		}
+
+		return income_tax;
 	}
 }
