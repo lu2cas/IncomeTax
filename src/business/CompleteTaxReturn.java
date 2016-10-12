@@ -1,6 +1,4 @@
-package taxreturns;
-
-import taxpayer.Taxpayer;
+package business;
 
 /**
  * Declaração de imposto de renda completa

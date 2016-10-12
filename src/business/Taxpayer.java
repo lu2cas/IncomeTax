@@ -1,4 +1,4 @@
-package taxpayer;
+package business;
 
 /**
  * Contribuinte
