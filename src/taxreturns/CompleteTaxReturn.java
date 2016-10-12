@@ -18,12 +18,6 @@ public class CompleteTaxReturn extends TaxReturn {
 	}
 
 	@Override
-	public void setTaxpayer(Taxpayer taxpayer) {
-		this.taxpayer = taxpayer;
-		
-	}
-
-	@Override
 	public double getCalculationBasis() {
 		double calculation_basis = 0;
 		calculation_basis = this.taxpayer.getTotalIncome() - this.taxpayer.getSocialSecurityContribution();
@@ -57,7 +51,7 @@ public class CompleteTaxReturn extends TaxReturn {
 
 	public double getIncomeTax() {
 		double calculation_basis = this.getCalculationBasis();
-System.out.println(calculation_basis);
+
 		return this.getIncomeTax(calculation_basis);
 	}
 }

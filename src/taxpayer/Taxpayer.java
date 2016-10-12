@@ -28,47 +28,23 @@ public class Taxpayer {
 		return this.name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getCpf() {
 		return this.cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
 	}
 
 	public double getTotalIncome() {
 		return this.totalIncome;
 	}
 
-	public void setTotalIncome(double total_income) {
-		this.totalIncome = total_income;
-	}
-
 	public double getSocialSecurityContribution() {
 		return this.socialSecurityContribution;
-	}
-
-	public void setSocialSecurityContribution(double social_security_contribution) {
-		this.socialSecurityContribution = social_security_contribution;
 	}
 
 	public int getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
-	}
-
 	public int getTotalDependents() {
 		return totalDependents;
-	}
-
-	public void setTotalDependents(int totalDependents) {
-		this.totalDependents = totalDependents;
 	}
 }

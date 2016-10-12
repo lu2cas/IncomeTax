@@ -18,11 +18,6 @@ public class SimplifiedTaxReturn extends TaxReturn {
 	}
 
 	@Override
-	public void setTaxpayer(Taxpayer taxpayer) {
-		this.taxpayer = taxpayer;
-	}
-
-	@Override
 	public double getCalculationBasis() {
 		double calculation_basis = 0;
 		calculation_basis = this.taxpayer.getTotalIncome() - this.taxpayer.getSocialSecurityContribution();
