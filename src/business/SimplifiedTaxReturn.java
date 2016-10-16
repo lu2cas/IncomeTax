@@ -1,7 +1,7 @@
 package business;
 
 /**
- * Declaração de imposto de renda simplificada
+ * DeclaraÃ§Ã£o de imposto de renda simplificada
  */
 public class SimplifiedTaxReturn extends TaxReturn {
 	private Taxpayer taxpayer;
@@ -10,12 +10,10 @@ public class SimplifiedTaxReturn extends TaxReturn {
 		this.taxpayer = taxpayer;
 	}
 
-	@Override
 	public Taxpayer getTaxpayer() {
 		return this.taxpayer;
 	}
 
-	@Override
 	public double getCalculationBasis() {
 		double calculation_basis = 0;
 		calculation_basis = this.taxpayer.getTotalIncome() - this.taxpayer.getSocialSecurityContribution();

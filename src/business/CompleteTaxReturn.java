@@ -1,7 +1,7 @@
 package business;
 
 /**
- * Declaração de imposto de renda completa
+ * DeclaraÃ§Ã£o de imposto de renda completa
  */
 public class CompleteTaxReturn extends TaxReturn {
 	private Taxpayer taxpayer;
@@ -10,12 +10,10 @@ public class CompleteTaxReturn extends TaxReturn {
 		this.taxpayer = taxpayer;
 	}
 
-	@Override
 	public Taxpayer getTaxpayer() {
 		return this.taxpayer;
 	}
 
-	@Override
 	public double getCalculationBasis() {
 		double calculation_basis = 0;
 		calculation_basis = this.taxpayer.getTotalIncome() - this.taxpayer.getSocialSecurityContribution();
