@@ -1,24 +1,24 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import javax.swing.JTextField;
-import java.awt.GridBagConstraints;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
+import javax.swing.JLabel;
 
 public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
+
+	private JPanel panelSimpifiedTaxReturn;
+	private JPanel panelCompleteTaxReturn;
 
 	/**
 	 * Launch the application.
@@ -48,24 +48,72 @@ public class MainFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
+		// Menu principal
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 494, 21);
 		contentPane.add(menuBar);
-		
+
 		JMenu mnFile = new JMenu("Arquivo");
 		menuBar.add(mnFile);
 		
 		JMenuItem mntmExit = new JMenuItem("Sair");
+		mntmExit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				System.exit(0);
+			}
+		});
 		mnFile.add(mntmExit);
-		
-		JMenu mnCalculate = new JMenu("Calcular imposto de renda");
-		menuBar.add(mnCalculate);
-		
+
+		JMenu mnTaxReturns = new JMenu("Declara\u00E7\u00F5es");
+		menuBar.add(mnTaxReturns);
+
 		JMenuItem mntmSimplifiedTaxReturn = new JMenuItem("Declara\u00E7\u00E3o simplificada");
-		mnCalculate.add(mntmSimplifiedTaxReturn);
-		
+		mnTaxReturns.add(mntmSimplifiedTaxReturn);
+		mntmSimplifiedTaxReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				do_mntmSimplifiedTaxReturn_actionPerformed(e);
+			}
+		});
+
 		JMenuItem mntmCompleteTaxReturn = new JMenuItem("Declara\u00E7\u00E3o completa");
-		mnCalculate.add(mntmCompleteTaxReturn);
+		mntmCompleteTaxReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				do_mntmCompleteTaxReturn_actionPerformed(e);
+			}
+		});
+		mnTaxReturns.add(mntmCompleteTaxReturn);
+
+		// Declaração de imposto de renda simplficada
+		panelSimpifiedTaxReturn = new JPanel();
+		panelSimpifiedTaxReturn.setBounds(0, 0, 494, 372);
+		panelSimpifiedTaxReturn.setLayout(null);
+
+		JLabel lblFoo = new JLabel();
+		lblFoo.setBounds(227, 172, 46, 14);
+		lblFoo.setText("FUBAR");
+		panelSimpifiedTaxReturn.add(lblFoo);
+
+		// Declaração de imposto de renda completa
+		panelCompleteTaxReturn = new JPanel();
+		panelCompleteTaxReturn.setBounds(0, 0, 494, 372);
+		panelCompleteTaxReturn.setLayout(null);
+
+		JLabel lblBar = new JLabel();
+		lblBar.setBounds(227, 172, 46, 14);
+		lblBar.setText("SNAFU");
+		panelCompleteTaxReturn.add(lblBar);
+	}
+
+	protected void do_mntmSimplifiedTaxReturn_actionPerformed(ActionEvent e) {
+		contentPane.add(panelSimpifiedTaxReturn);
+		contentPane.repaint();
+	}
+
+	protected void do_mntmCompleteTaxReturn_actionPerformed(ActionEvent e) {
+		contentPane.remove(contentPane.getComponent(1));
+
+		contentPane.add(panelCompleteTaxReturn);
+		contentPane.repaint();
 	}
 }
