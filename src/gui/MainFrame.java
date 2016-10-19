@@ -106,14 +106,19 @@ public class MainFrame extends JFrame {
 	}
 
 	protected void do_mntmSimplifiedTaxReturn_actionPerformed(ActionEvent e) {
-		contentPane.add(panelSimpifiedTaxReturn);
-		contentPane.repaint();
+		changePanel(panelSimpifiedTaxReturn);
 	}
 
 	protected void do_mntmCompleteTaxReturn_actionPerformed(ActionEvent e) {
-		contentPane.remove(contentPane.getComponent(1));
+		changePanel(panelCompleteTaxReturn);
+	}
 
-		contentPane.add(panelCompleteTaxReturn);
+	private void changePanel(JPanel panel) {
+		if (contentPane.getComponents().length > 1) {
+			contentPane.remove(contentPane.getComponent(1));
+		}
+		contentPane.add(panel);
+		contentPane.revalidate();
 		contentPane.repaint();
 	}
 }
