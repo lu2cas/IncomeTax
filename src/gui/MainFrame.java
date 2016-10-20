@@ -93,7 +93,7 @@ public class MainFrame extends JFrame {
 		lblFoo.setBounds(227, 172, 46, 14);
 		lblFoo.setText("FUBAR");
 		panelSimpifiedTaxReturn.add(lblFoo);
-
+//contentPane.add(panelSimpifiedTaxReturn);
 		// Declaração de imposto de renda completa
 		panelCompleteTaxReturn = new JPanel();
 		panelCompleteTaxReturn.setBounds(0, 0, 494, 372);

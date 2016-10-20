@@ -4,17 +4,12 @@ package business;
  * Declaração de imposto de renda completa
  */
 public class CompleteTaxReturn extends TaxReturn {
-	private Taxpayer taxpayer;
-
 	public CompleteTaxReturn(Taxpayer taxpayer) {
-		this.taxpayer = taxpayer;
+		super(taxpayer);
+		this.setCalculationBasis();
 	}
 
-	public Taxpayer getTaxpayer() {
-		return this.taxpayer;
-	}
-
-	public double getCalculationBasis() {
+	protected void setCalculationBasis() {
 		double calculation_basis = 0;
 		calculation_basis = this.taxpayer.getTotalIncome() - this.taxpayer.getSocialSecurityContribution();
 
@@ -42,12 +37,7 @@ public class CompleteTaxReturn extends TaxReturn {
 			}
 		}
 
-		return calculation_basis;
+		this.calculationBasis = calculation_basis;
 	}
 
-	public double getIncomeTax() {
-		double calculation_basis = this.getCalculationBasis();
-
-		return this.getIncomeTax(calculation_basis);
-	}
 }

@@ -4,19 +4,28 @@ package business;
  * Declaração de imposto de renda
  */
 public abstract class TaxReturn {
-	public abstract Taxpayer getTaxpayer();
+	protected double calculationBasis;
+	protected Taxpayer taxpayer;
 
-	public abstract double getCalculationBasis();
+	public TaxReturn(Taxpayer taxpayer) {
+		this.taxpayer = taxpayer;
+	}
 
-	public double getIncomeTax(double calculation_basis) {
+	public Taxpayer getTaxpayer() {
+		return this.taxpayer;
+	}
+
+	protected abstract void setCalculationBasis();
+
+	public double getIncomeTax() {
 		double income_tax = 0;
 
-		if (calculation_basis <= 12000) {
+		if (this.calculationBasis <= 12000) {
 			income_tax = 0;
-		} else if (calculation_basis > 12000 && calculation_basis < 24000) {
-			income_tax = (calculation_basis - 12000) * 0.15;
-		} else if (calculation_basis >= 24000) {
-			income_tax = (calculation_basis - 12000) * 0.15 + (calculation_basis - 24000) * 0.275;
+		} else if (this.calculationBasis > 12000 && this.calculationBasis < 24000) {
+			income_tax = (this.calculationBasis - 12000) * 0.15;
+		} else if (this.calculationBasis >= 24000) {
+			income_tax = (this.calculationBasis - 12000) * 0.15 + (this.calculationBasis - 24000) * 0.275;
 		}
 
 		return income_tax;
