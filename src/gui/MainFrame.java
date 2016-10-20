@@ -12,6 +12,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
 
 public class MainFrame extends JFrame {
 
@@ -43,7 +45,7 @@ public class MainFrame extends JFrame {
 		setResizable(false);
 		setTitle("C\u00E1lculo de imposto de renda");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 400);
+		setBounds(100, 100, 500, 450);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -85,24 +87,12 @@ public class MainFrame extends JFrame {
 		mnTaxReturns.add(mntmCompleteTaxReturn);
 
 		// Declaração de imposto de renda simplficada
-		panelSimpifiedTaxReturn = new JPanel();
-		panelSimpifiedTaxReturn.setBounds(0, 0, 494, 372);
-		panelSimpifiedTaxReturn.setLayout(null);
+		panelSimpifiedTaxReturn = new SimplifiedTaxReturnPanel();
+		((SimplifiedTaxReturnPanel) panelSimpifiedTaxReturn).makeForm();
 
-		JLabel lblFoo = new JLabel();
-		lblFoo.setBounds(227, 172, 46, 14);
-		lblFoo.setText("FUBAR");
-		panelSimpifiedTaxReturn.add(lblFoo);
-//contentPane.add(panelSimpifiedTaxReturn);
 		// Declaração de imposto de renda completa
-		panelCompleteTaxReturn = new JPanel();
-		panelCompleteTaxReturn.setBounds(0, 0, 494, 372);
-		panelCompleteTaxReturn.setLayout(null);
-
-		JLabel lblBar = new JLabel();
-		lblBar.setBounds(227, 172, 46, 14);
-		lblBar.setText("SNAFU");
-		panelCompleteTaxReturn.add(lblBar);
+		panelCompleteTaxReturn = new CompleteTaxReturnPanel();
+		((CompleteTaxReturnPanel) panelCompleteTaxReturn).makeForm();
 	}
 
 	protected void do_mntmSimplifiedTaxReturn_actionPerformed(ActionEvent e) {
