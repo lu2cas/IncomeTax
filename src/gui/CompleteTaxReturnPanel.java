@@ -1,34 +1,39 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import business.*;
+
 public class CompleteTaxReturnPanel extends JPanel {
-	public JLabel lblName;
-	public JLabel lblCpf;
-	public JLabel lblTotalIncome;
-	public JLabel lblSocialSecurityContribution;
-	public JLabel lblAge;
-	public JLabel lblTotalDependents;
-	public JLabel lblIncomeTax;
+	private JLabel lblName;
+	private JLabel lblCpf;
+	private JLabel lblTotalIncome;
+	private JLabel lblSocialSecurityContribution;
+	private JLabel lblAge;
+	private JLabel lblTotalDependents;
+	private JLabel lblIncomeTax;
 
-	public JTextField textFieldName;
-	public JTextField textFieldCpf;
-	public JTextField texFieldTotalIncome;
-	public JTextField textFieldSocialSecurityContribution;
-	public JTextField textFieldAge;
-	public JTextField textFieldTotalDependents;
+	private JTextField textFieldName;
+	private JTextField textFieldCpf;
+	private JTextField texFieldTotalIncome;
+	private JTextField textFieldSocialSecurityContribution;
+	private JTextField textFieldAge;
+	private JTextField textFieldTotalDependents;
 
-	public JButton btnClear;
-	public JButton btnCalculate;
+	private JButton btnClear;
+	private JButton btnCalculate;
 
 	public CompleteTaxReturnPanel() {}
 
 	public void makeForm() {
-		setBounds(0, 0, 494, 422);
-		setLayout(null);
+		this.setBounds(0, 0, 494, 422);
+		this.setLayout(null);
 
 		lblName = new JLabel("Nome");
 		lblName.setBounds(30, 40, 350, 14);
@@ -94,6 +99,28 @@ public class CompleteTaxReturnPanel extends JPanel {
 
 		btnCalculate = new JButton("Calcular");
 		btnCalculate.setBounds(385, 378, 89, 23);
+		btnCalculate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				do_btnCalculate_actionPerformed(e);
+			}
+		});
 		this.add(btnCalculate);
+	}
+
+	protected void do_btnCalculate_actionPerformed(ActionEvent e) {
+		String name = textFieldName.getText();
+		String cpf = textFieldCpf.getText();
+		String total_income = texFieldTotalIncome.getText();
+		String social_security_contribution = textFieldSocialSecurityContribution.getText();
+		String age = textFieldAge.getText();
+		String total_dependents = textFieldTotalDependents.getText();
+
+		String valid_name;
+		TaxReturnValidator v = new TaxReturnValidator();
+		if (v.isValidName(name)) {
+			valid_name = v.getName();
+		}
+
+		//tax_payer = new Taxpayer();
 	}
 }

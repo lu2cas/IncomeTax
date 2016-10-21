@@ -6,25 +6,25 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class SimplifiedTaxReturnPanel extends JPanel {
-	public JLabel lblName;
-	public JLabel lblCpf;
-	public JLabel lblTotalIncome;
-	public JLabel lblSocialSecurityContribution;
-	public JLabel lblIncomeTax;
+	private JLabel lblName;
+	private JLabel lblCpf;
+	private JLabel lblTotalIncome;
+	private JLabel lblSocialSecurityContribution;
+	private JLabel lblIncomeTax;
 
-	public JTextField textFieldName;
-	public JTextField textFieldCpf;
-	public JTextField texFieldTotalIncome;
-	public JTextField textFieldSocialSecurityContribution;
+	private JTextField textFieldName;
+	private JTextField textFieldCpf;
+	private JTextField texFieldTotalIncome;
+	private JTextField textFieldSocialSecurityContribution;
 
-	public JButton btnClear;
-	public JButton btnCalculate;
+	private JButton btnClear;
+	private JButton btnCalculate;
 
 	public SimplifiedTaxReturnPanel() {}
 
 	public void makeForm() {
-		setBounds(0, 0, 494, 422);
-		setLayout(null);
+		this.setBounds(0, 0, 494, 422);
+		this.setLayout(null);
 
 		lblName = new JLabel("Nome");
 		lblName.setBounds(30, 40, 350, 14);
