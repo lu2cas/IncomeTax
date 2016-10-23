@@ -1,5 +1,6 @@
 package business;
 
+// Classe de validação para entrada de dados
 public class TaxReturnValidator {
 	private String name;
 	private String cpf;
