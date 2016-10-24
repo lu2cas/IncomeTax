@@ -17,11 +17,11 @@ public class TaxReturnValidator {
 		return cpf;
 	}
 
-	public double getTotal_income() {
+	public double getTotalIncome() {
 		return total_income;
 	}
 
-	public double getSocial_security_contribution() {
+	public double getSocialSecurityContribution() {
 		return social_security_contribution;
 	}
 
@@ -29,7 +29,7 @@ public class TaxReturnValidator {
 		return age;
 	}
 
-	public int getTotal_dependents() {
+	public int getTotalDependents() {
 		return total_dependents;
 	}
 
@@ -45,7 +45,7 @@ public class TaxReturnValidator {
 	public boolean isValidCpf(String cpf) {
 		boolean is_valid;
 		try {
-			Integer.parseInt(cpf);
+			Double.parseDouble(cpf);
 			is_valid = true;
 			this.cpf = cpf;
 		} catch(Exception e) {
@@ -116,5 +116,28 @@ public class TaxReturnValidator {
 			is_valid = false;
 		}
 		return is_valid;
+	}
+
+	public boolean isValidSimplifiedTaxReturn(String name, String cpf, String total_income, String social_security_contribution) {
+		if (
+			this.isValidName(name) &&
+			this.isValidCpf(cpf) &&
+			this.isValidTotalIncome(total_income) &&
+			this.isValidTotalSocialSecurityContribution(social_security_contribution)
+		) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean isValidCompleteTaxReturn(String name, String cpf, String total_income, String social_security_contribution, String age, String total_dependents) {
+		if (
+			this.isValidSimplifiedTaxReturn(name, cpf, total_income, social_security_contribution) &&
+			this.isValidAge(age) &&
+			this.isValidTotalDependents(total_dependents)
+		) {
+			return true;
+		}
+		return false;
 	}
 }

@@ -1,9 +1,16 @@
 package gui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import business.CompleteTaxReturn;
+import business.TaxReturnValidator;
+import business.Taxpayer;
 
 public class SimplifiedTaxReturnPanel extends JPanel {
 	private JLabel lblName;
@@ -68,10 +75,47 @@ public class SimplifiedTaxReturnPanel extends JPanel {
 
 		btnClear = new JButton("Limpar");
 		btnClear.setBounds(296, 378, 84, 23);
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				do_btnClear_actionPerformed(e);
+			}
+		});
 		this.add(btnClear);
 
 		btnCalculate = new JButton("Calcular");
 		btnCalculate.setBounds(385, 378, 89, 23);
+		btnCalculate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				do_btnCalculate_actionPerformed(e);
+			}
+		});
 		this.add(btnCalculate);
+	}
+
+	protected void do_btnCalculate_actionPerformed(ActionEvent e) {
+		String name = textFieldName.getText();
+		String cpf = textFieldCpf.getText();
+		String total_income = texFieldTotalIncome.getText();
+		String social_security_contribution = textFieldSocialSecurityContribution.getText();
+
+		String income_tax;
+
+		TaxReturnValidator validator = new TaxReturnValidator();
+		if (validator.isValidSimplifiedTaxReturn(name, cpf, total_income, social_security_contribution)) {
+			Taxpayer taxpayer = new Taxpayer(validator.getName(), validator.getCpf(), validator.getTotalIncome(), validator.getSocialSecurityContribution(), validator.getAge(), validator.getTotalDependents());
+			CompleteTaxReturn completeTaxReturn = new CompleteTaxReturn(taxpayer);
+			income_tax = "R$ " + String.format("%.2f", completeTaxReturn.getIncomeTax());
+		} else {
+			income_tax = "Erro!";
+		}
+		lblIncomeTax.setText("Imposto de renda: " + income_tax);
+	}
+
+	protected void do_btnClear_actionPerformed(ActionEvent e) {
+		textFieldName.setText("");
+		textFieldCpf.setText("");
+		texFieldTotalIncome.setText("");
+		textFieldSocialSecurityContribution.setText("");
+		lblIncomeTax.setText("Imposto de renda:");
 	}
 }

@@ -95,6 +95,11 @@ public class CompleteTaxReturnPanel extends JPanel {
 
 		btnClear = new JButton("Limpar");
 		btnClear.setBounds(296, 378, 84, 23);
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				do_btnClear_actionPerformed(e);
+			}
+		});
 		this.add(btnClear);
 
 		btnCalculate = new JButton("Calcular");
@@ -115,12 +120,26 @@ public class CompleteTaxReturnPanel extends JPanel {
 		String age = textFieldAge.getText();
 		String total_dependents = textFieldTotalDependents.getText();
 
-		String valid_name;
-		TaxReturnValidator v = new TaxReturnValidator();
-		if (v.isValidName(name)) {
-			valid_name = v.getName();
-		}
+		String income_tax;
 
-		//tax_payer = new Taxpayer();
+		TaxReturnValidator validator = new TaxReturnValidator();
+		if (validator.isValidCompleteTaxReturn(name, cpf, total_income, social_security_contribution, age, total_dependents)) {
+			Taxpayer taxpayer = new Taxpayer(validator.getName(), validator.getCpf(), validator.getTotalIncome(), validator.getSocialSecurityContribution(), validator.getAge(), validator.getTotalDependents());
+			CompleteTaxReturn completeTaxReturn = new CompleteTaxReturn(taxpayer);
+			income_tax = "R$ " + String.format("%.2f", completeTaxReturn.getIncomeTax());
+		} else {
+			income_tax = "Erro!";
+		}
+		lblIncomeTax.setText("Imposto de renda: " + income_tax);
+	}
+
+	protected void do_btnClear_actionPerformed(ActionEvent e) {
+		textFieldName.setText("");
+		textFieldCpf.setText("");
+		texFieldTotalIncome.setText("");
+		textFieldSocialSecurityContribution.setText("");
+		textFieldAge.setText("");
+		textFieldTotalDependents.setText("");
+		lblIncomeTax.setText("Imposto de renda:");
 	}
 }
