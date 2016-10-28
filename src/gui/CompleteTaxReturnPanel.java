@@ -32,65 +32,59 @@ public class CompleteTaxReturnPanel extends JPanel {
 	public CompleteTaxReturnPanel() {}
 
 	public void makeForm() {
-		this.setBounds(0, 0, 494, 422);
+		this.setBounds(0, 0, 500, 450);
 		this.setLayout(null);
 
 		lblName = new JLabel("Nome");
-		lblName.setBounds(30, 40, 350, 14);
+		lblName.setBounds(30, 40, 350, 20);
 		this.add(lblName);
 
 		textFieldName = new JTextField();
-		textFieldName.setBounds(30, 59, 350, 20);
-		textFieldName.setColumns(10);
+		textFieldName.setBounds(30, 60, 350, 20);
 		this.add(textFieldName);
 
 		lblCpf = new JLabel("CPF");
-		lblCpf.setBounds(30, 84, 350, 14);
+		lblCpf.setBounds(30, 85, 350, 20);
 		this.add(lblCpf);
 
 		textFieldCpf = new JTextField();
-		textFieldCpf.setBounds(30, 103, 195, 20);
-		textFieldCpf.setColumns(10);
+		textFieldCpf.setBounds(30, 105, 195, 20);
 		this.add(textFieldCpf);
 
 		lblTotalIncome = new JLabel("Total de rendimentos");
-		lblTotalIncome.setBounds(30, 128, 350, 14);
+		lblTotalIncome.setBounds(30, 130, 350, 20);
 		this.add(lblTotalIncome);
 
 		texFieldTotalIncome = new JTextField();
-		texFieldTotalIncome.setBounds(30, 147, 195, 20);
-		texFieldTotalIncome.setColumns(10);
+		texFieldTotalIncome.setBounds(30, 150, 195, 20);
 		this.add(texFieldTotalIncome);
 
 		lblSocialSecurityContribution = new JLabel("Contribui\u00E7\u00E3o previdenci\u00E1ria oficial");
-		lblSocialSecurityContribution.setBounds(30, 172, 350, 14);
+		lblSocialSecurityContribution.setBounds(30, 175, 350, 20);
 		this.add(lblSocialSecurityContribution);
 
 		textFieldSocialSecurityContribution = new JTextField();
-		textFieldSocialSecurityContribution.setBounds(30, 191, 195, 20);
-		textFieldSocialSecurityContribution.setColumns(10);
+		textFieldSocialSecurityContribution.setBounds(30, 195, 195, 20);
 		this.add(textFieldSocialSecurityContribution);
 
 		lblAge = new JLabel("Idade");
-		lblAge.setBounds(30, 216, 350, 14);
+		lblAge.setBounds(30, 220, 350, 20);
 		this.add(lblAge);
 
 		textFieldAge = new JTextField();
-		textFieldAge.setBounds(30, 235, 195, 20);
-		textFieldAge.setColumns(10);
+		textFieldAge.setBounds(30, 240, 195, 20);
 		this.add(textFieldAge);
 
 		lblTotalDependents = new JLabel("Total de dependentes");
-		lblTotalDependents.setBounds(30, 260, 350, 14);
+		lblTotalDependents.setBounds(30, 265, 350, 20);
 		this.add(lblTotalDependents);
 
 		textFieldTotalDependents = new JTextField();
-		textFieldTotalDependents.setBounds(30, 279, 195, 20);
-		textFieldTotalDependents.setColumns(10);
+		textFieldTotalDependents.setBounds(30, 285, 195, 20);
 		this.add(textFieldTotalDependents);
 
 		lblIncomeTax = new JLabel("Imposto de renda:");
-		lblIncomeTax.setBounds(30, 334, 195, 14);
+		lblIncomeTax.setBounds(30, 320, 195, 20);
 		this.add(lblIncomeTax);
 
 		btnClear = new JButton("Limpar");
